@@ -10,3 +10,5 @@ Michelle Leon: http://imgur.com/a/RoETd
 Ryan Ice: https://youtu.be/JTXSFlhXKsA
 
 David Fang: https://youtu.be/RVr7yEQvoZ0
+
+Brian Chen: https://youtu.be/8bKAEbnFYjE
