@@ -7,6 +7,7 @@ bundler_args: --without production
 before-script:
   - psql -c 'create database my_database_test;' -U postgres
 script:
+  - rake db:create
   - RAILS_ENV=test bundle exec rake db:migrate --trace
   - bundle exec rake db:test:prepare
   - bundle exec rake
