@@ -1,6 +1,12 @@
 Customer entry link:
 https://youtu.be/4HrHBXfYVhE
 
+Heroku App Link:
+https://city-dog-share-calendar.herokuapp.com/
+
+Pivotal Tracker link:
+https://www.pivotaltracker.com/n/projects/1884193
+
 Screencast Links:
 
 Steven Cheng - https://youtu.be/NRzv2fIRPXE
