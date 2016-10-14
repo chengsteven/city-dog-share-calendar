@@ -58,3 +58,25 @@ Cucumber::Rails::Database.javascript_strategy = :truncation
 
 # For cucumber
 World(FactoryGirl::Syntax::Methods)
+
+
+Before('@omniauth_test_success') do
+  OmniAuth.config.test_mode = true
+
+  OmniAuth.config.mock_auth[:facebook] = {
+    "provider"  => "facebook",
+    "uid"       => '12345',
+    "user_info" => {
+      "email" => "email@email.com",
+      "first_name" => "John",
+      "last_name"  => "Doe",
+      "name"       => "John Doe"
+      # any other attributes you want to stub out for testing
+    }
+  }
+end
+
+Before('@omniauth_test_failure') do
+  OmniAuth.config.test_mode = true
+  OmniAuth.config.mock_auth[:facebook] = :invalid_credentials
+end
