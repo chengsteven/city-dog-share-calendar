@@ -11,7 +11,8 @@ end
 World(WithinHelpers)
 
 Given(/^that the visible date range is (\d+)\/(\d+)\/(\d+) to (\d+)\/(\d+)\/(\d+)$/) do |arg1, arg2, arg3, arg4, arg5, arg6|
-  pending # Write code here that turns the phrase above into concrete actions
+  skip_this_scenario
+  # pending # Write code here that turns the phrase above into concrete actions
 end
 
 Given(/^an appointment for (\d+)\/(\d+)\/(\d+) (\d+)PM exists$/) do |arg1, arg2, arg3, arg4|
