@@ -28,6 +28,7 @@ Then(/^I should see an appointment for (\d+)\/(\d+)\/(\d+) (\d+)PM$/) do |arg1, 
 end
 
 Given(/^no appointments exist$/) do
+  # Appointment.delete_all
   pending # Write code here that turns the phrase above into concrete actions
 end
 
