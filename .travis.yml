@@ -11,5 +11,7 @@ script:
   - RAILS_ENV=test bundle exec rake db:migrate --trace
   - bundle exec rake db:test:prepare
   - bundle exec rake
+after_script:
+  - bundle exec rake send_to_codeclimate
 services:
   - postgresql
