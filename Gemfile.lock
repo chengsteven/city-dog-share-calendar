@@ -389,7 +389,7 @@ DEPENDENCIES
   cucumber-rails
   cucumber-rails-training-wheels
   database_cleaner
-  factory_girl_rails
+  factory_girl_rails (~> 4.0)
   guard-rspec
   jasmine-rails
   jbuilder (~> 2.0)
