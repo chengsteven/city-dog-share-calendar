@@ -1,12 +1,13 @@
 Rails.application.routes.draw do
   mount FullcalendarEngine::Engine => "/fullcalendar/demo"
-  root :to => redirect('/fullcalendar/demo')
+  # get "/fullcalendar/demo" =>
+  # root :to => redirect('/fullcalendar/demo')
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  # root  'fullcalendar/demo'
-  # resource 'home'
+  root  "kalendar#index"
+  resource 'home'
   # get '/kalendar' => 'kalendar#index', as: :kalendar
 
   # Example of regular route:
