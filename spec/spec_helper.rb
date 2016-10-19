@@ -16,6 +16,15 @@
 # users commonly want.
 #
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
+require "simplecov"
+SimpleCov.start do
+  add_filter "/vendor/" # Ignores any file containing "/vendor/" in its path.
+  add_filter "/features/" # Ignores a specific file.
+  add_filter "/spec/" # Ignores a specific file.
+  add_filter "/lib/" # Ignores a specific file.
+  add_filter "/config/" # Ignores a specific file.
+end
+
 RSpec.configure do |config|
   # rspec-expectations config goes here. You can use an alternate
   # assertion/expectation library such as wrong or the stdlib/minitest
