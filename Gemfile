@@ -4,8 +4,6 @@ ruby '2.2.5'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.7.1'
-# Use sqlite3 as the database for Active Record, heroku doesn't support sqlite3
-gem 'sqlite3'
 # Use postgres instead as the database
 gem 'pg'
 # Use SCSS for stylesheets
@@ -40,6 +38,8 @@ gem 'fullcalendar_engine', "1.0.4"
 group :development, :test do
   gem 'jasmine-rails' # if you plan to use JavaScript/CoffeeScript
   gem 'byebug'
+  # Use sqlite3 as the database for Active Record, heroku doesn't support sqlite3
+  gem 'sqlite3'
 end
 # setup Cucumber, RSpec, Guard support
 group :test do
