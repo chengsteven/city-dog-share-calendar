@@ -396,11 +396,7 @@ DEPENDENCIES
   cucumber-rails-training-wheels
   database_cleaner
   factory_girl_rails
-<<<<<<< HEAD
   fullcalendar_engine (= 1.0.4)
-=======
-  fullcalendar_engine
->>>>>>> aac5e5d1a45235201799e3831a8e97bd5530b5b5
   guard-rspec
   jasmine-rails
   jbuilder (~> 2.0)
