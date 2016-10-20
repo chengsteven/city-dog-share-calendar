@@ -7,7 +7,7 @@ Rails.application.routes.draw do
 
   # You can have the root of your site routed with "root"
   root  "kalendar#index"
-  resource 'home'
+  # resource 'home'
   # get '/kalendar' => 'kalendar#index', as: :kalendar
 
   # Example of regular route:
