@@ -75,3 +75,24 @@ Then(/^I should see an appointment$/) do
   # pending # Write code here that turns the phrase above into concrete actions
   expect{ (page.find('div.fc-event')) }.not_to raise_error
 end
+
+#------------------------ TO ADD -----------------------------------------
+Given(/^I specify the Title as "([^"]*)"$/) do |arg1|
+  pending # Write code here that turns the phrase above into concrete actions
+end
+
+Given(/^I specify the Description as "([^"]*)"$/) do |arg1|
+  pending # Write code here that turns the phrase above into concrete actions
+end
+
+Given(/^I specify the Start Time as "([^"]*)"$/) do |arg1|
+  pending # Write code here that turns the phrase above into concrete actions
+end
+
+Given(/^I specify the End Time "([^"]*)"$/) do |arg1|
+  pending # Write code here that turns the phrase above into concrete actions
+end
+
+Given(/^I specify to repeat every "([^"]*)"$/) do |arg1|
+  pending # Write code here that turns the phrase above into concrete actions
+end
