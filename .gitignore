@@ -17,5 +17,5 @@ my_database_development
 !/log/.keep
 /tmp
 
-# Ignore Coverage stuff
-coverage/*
+# Ignore coverage files
+/coverage

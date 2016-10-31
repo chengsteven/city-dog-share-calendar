@@ -4,7 +4,19 @@ Rails.application.routes.draw do
   # root :to => redirect('/fullcalendar/demo')
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
-
+  
+  
+  # Session routes
+  get 'auth/:provider/callback', to: 'sessions#handle_auth', as: 'auth_success'
+  get 'auth/failure', to: 'sessions#handle_failure', as: 'auth_failure'
+  get 'signout' => 'sessions#destroy', :as => :signout
+  get 'create', to: 'sessions#create', as: 'create_session'
+  get 'login', to: 'sessions#login', as: 'login'
+  get 'signup', to: 'sessions#signup', as: 'signup'
+  
+  resources :users, only: [:show, :edit, :update, :destroy, :index]
+  post 'users/:id/edit', to: 'users#edit'
+  
   # You can have the root of your site routed with "root"
   root  "kalendar#index"
   # resource 'home'

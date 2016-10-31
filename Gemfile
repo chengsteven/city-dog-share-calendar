@@ -64,6 +64,5 @@ group :development do
   gem 'spring'
 end
 
-gem 'omniauth'
 gem 'omniauth-facebook'
 
