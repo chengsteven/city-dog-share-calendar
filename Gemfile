@@ -24,7 +24,9 @@ gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
 # Full calendar gem
-gem 'fullcalendar_engine', "1.0.4"
+# gem 'fullcalendar_engine', "1.0.4"
+# Local full calendar gem, modified for city-dog-share
+gem "fullcalendar_engine", :path => "fullcalendar-rails-engine"
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
