@@ -1,0 +1,17 @@
+ratings:
+  paths:
+  - app/controllers/**
+  # - "**.rb"
+exclude_paths:
+- spec/**
+- bin/**
+- config/**
+- features/**
+- iterations/**
+- lib/**
+- log/**
+- public/**
+- script/**
+- spec/**
+- tmp/**
+- vendor/**
