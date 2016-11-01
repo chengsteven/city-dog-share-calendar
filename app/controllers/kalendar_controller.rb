@@ -1,9 +1,10 @@
 class KalendarController < ApplicationController
   def index
-    if User.exists?(params[:id])
-      @user = User.find(session[:user_id])
-    else
-      @user = nil
+    if session[:user_id].nil?
+      puts "*********************************************************************************************"
+      
+      redirect_to '/auth/facebook'
     end
+    @user = User.find_by_uid(session[:user_id])
   end
 end
