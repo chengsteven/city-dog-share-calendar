@@ -20,13 +20,20 @@
 </p>
 <p>
   Repeats on: <br>
-  <label><input type="checkbox" id="form-sunday">Sun</label>
-  <label><input type="checkbox" id="form-monday">M</label>
-  <label><input type="checkbox" id="form-tuesday">Tu</label>
-  <label><input type="checkbox" id="form-wednesday">W</label>
-  <label><input type="checkbox" id="form-thursday">Th</label>
-  <label><input type="checkbox" id="form-friday">F</label>
-  <label><input type="checkbox" id="form-saturda">Sat</label>
+  <%=f.check_box :sunday %>
+  <%=f.label :sunday, "Sun" %>
+  <%=f.check_box :monday %>
+  <%=f.label :monday, "Mon" %>
+  <%=f.check_box :tuesday %>
+  <%=f.label :tuesday, "Tue" %>
+  <%=f.check_box :wednesday %>
+  <%=f.label :wednesday, "Wed" %>
+  <%=f.check_box :thursday %>
+  <%=f.label :thursday, "Thu" %>
+  <%=f.check_box :friday %>
+  <%=f.label :friday, "Fri" %>
+  <%=f.check_box :saturday %>
+  <%=f.label :saturday, "Sat" %>
 </p>
 <!-- <p>
   <%=f.label :period, "Repeats" %>

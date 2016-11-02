@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161031213116) do
+ActiveRecord::Schema.define(version: 20161102035449) do
 
   create_table "fullcalendar_engine_event_series", force: :cascade do |t|
     t.integer  "frequency",  default: 1
@@ -21,6 +21,13 @@ ActiveRecord::Schema.define(version: 20161031213116) do
     t.boolean  "all_day",    default: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "sunday",     default: false
+    t.boolean  "monday",     default: false
+    t.boolean  "tuesday",    default: false
+    t.boolean  "wednesday",  default: false
+    t.boolean  "thursday",   default: false
+    t.boolean  "friday",     default: false
+    t.boolean  "saturday",   default: false
   end
 
   create_table "fullcalendar_engine_events", force: :cascade do |t|
