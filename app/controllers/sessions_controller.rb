@@ -42,7 +42,6 @@ class SessionsController < ApplicationController
       
 
   def handle_auth 
-    puts "**************************************************************************"
     uid = request.env["omniauth.auth"][:uid]
     @user = User.find_by_uid(uid)
     
