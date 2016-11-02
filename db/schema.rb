@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161031213116) do
+ActiveRecord::Schema.define(version: 20161031213120) do
 
   create_table "fullcalendar_engine_event_series", force: :cascade do |t|
     t.integer  "frequency",  default: 1
@@ -37,13 +37,22 @@ ActiveRecord::Schema.define(version: 20161031213116) do
   add_index "fullcalendar_engine_events", ["event_series_id"], name: "index_fullcalendar_engine_events_on_event_series_id"
 
   create_table "users", force: :cascade do |t|
-    t.string   "provider"
     t.string   "uid"
     t.string   "name"
     t.string   "oauth_token"
     t.datetime "oauth_expires_at"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "last_name"
+    t.string   "first_name"
+    t.string   "location"
+    t.string   "gender"
+    t.string   "image"
+    t.string   "status"
+    t.string   "phone_number"
+    t.string   "email"
+    t.string   "description"
+    t.string   "availability"
   end
 
 end
