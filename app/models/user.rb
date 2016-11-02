@@ -14,7 +14,7 @@ class User < ActiveRecord::Base
   end
 
   def facebook_info_update(auth)
-    self.uid = 112233
+    self.uid = auth[:uid]
     if(auth[:extra][:raw_info] != nil)
       self.gender = auth[:extra][:raw_info][:gender]
     end
