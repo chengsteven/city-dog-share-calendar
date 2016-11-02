@@ -1,0 +1,42 @@
+<%= form_for @event ||= FullcalendarEngine::Event.new, :html => { id: 'event_form' } do |f| %>
+<%=f.label :title %>
+<br/>
+<%=f.text_field :title %>
+<img id="form-dog-profile-pic" src="http://dogfriendlydirectory.com/wp-content/uploads/photo-gallery/cute-dog-pictures-for-kids.jpg" alt="Dog" style="width:150px;height:150px;" align="right">
+<p>
+  <%=f.label :description %>
+  <br/>
+  <%=f.text_area :description, :rows => 4, :cols => 30 %>
+</p>
+<p>
+  <%=f.label :starttime, 'Start Time' %>
+  <br/>
+  <%=f.time_select :starttime %>
+</p>
+<p>
+  <%=f.label :endtime, 'End Time' %>
+  <br/>
+  <%=f.time_select :endtime %>
+</p>
+<p>
+  Repeats on: <br>
+  <label><input type="checkbox" id="form-sunday">Sun</label>
+  <label><input type="checkbox" id="form-monday">M</label>
+  <label><input type="checkbox" id="form-tuesday">Tu</label>
+  <label><input type="checkbox" id="form-wednesday">W</label>
+  <label><input type="checkbox" id="form-thursday">Th</label>
+  <label><input type="checkbox" id="form-friday">F</label>
+  <label><input type="checkbox" id="form-saturda">Sat</label>
+</p>
+<!-- <p>
+  <%=f.label :period, "Repeats" %>
+  <%=f.select :period, FullcalendarEngine::Event::REPEATS.values, {}, onchange: "FullcalendarEngine.Events.showPeriodAndFrequency(this.value);" %>
+</p> -->
+<p id = "frequency" style = "display:none;">
+  <%=f.label :frequency, "Repeat every" %>
+  <%=f.select :frequency, (1..30).to_a %> <span id = "period"></span>
+</p>
+<p>
+  <%=f.submit %> <span id = "creating_events" class="spinner" style = "display:none;">Creating, Please wait...</span>
+</p>
+<%end %>
