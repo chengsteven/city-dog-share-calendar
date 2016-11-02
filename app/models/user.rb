@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
+  include ActiveModel::ForbiddenAttributesProtection
   
-  
-  attr_accessor :first_name, :last_name, :location, :gender, :image, :status, :phone_number, :email, :availability, :description, :address, :zipcode, :city, :country
+  # attr_accessor :first_name, :last_name, :location, :gender, :image, :status, :phone_number, :email, :availability, :description, :address, :zipcode, :city, :country
   def update_credentials(credentials)
     oauth = Koala::Facebook::OAuth.new("541018786093799", "b02e59087efb86f9afe137e2bc7b4200")
     new_access_info = oauth.exchange_access_token_info(credentials[:token])
@@ -14,7 +14,7 @@ class User < ActiveRecord::Base
   end
 
   def facebook_info_update(auth)
-    self.uid = auth[:uid]
+    self.uid = 112233
     if(auth[:extra][:raw_info] != nil)
       self.gender = auth[:extra][:raw_info][:gender]
     end

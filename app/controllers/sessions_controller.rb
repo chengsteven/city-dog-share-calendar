@@ -24,7 +24,7 @@ class SessionsController < ApplicationController
       redirect_to create_session_path(:user => @user)
     else
       flash[:notice] = "User does not exist. Please sign up."
-      redirect_to root_path()
+      redirect_to kalendar_path()
     end   
   end 
  
