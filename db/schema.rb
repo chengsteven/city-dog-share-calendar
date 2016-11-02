@@ -15,7 +15,7 @@ ActiveRecord::Schema.define(version: 20161102035449) do
 
   create_table "fullcalendar_engine_event_series", force: :cascade do |t|
     t.integer  "frequency",  default: 1
-    t.string   "period",     default: "monthly"
+    t.string   "period",     default: "weekly"
     t.datetime "starttime"
     t.datetime "endtime"
     t.boolean  "all_day",    default: false
