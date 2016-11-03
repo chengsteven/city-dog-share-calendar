@@ -66,4 +66,3 @@ end
 
 gem 'omniauth-facebook'
 gem 'koala', '2.0.0'
-

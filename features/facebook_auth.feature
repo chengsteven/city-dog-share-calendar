@@ -1,23 +1,4 @@
-# Feature: Login with Facebook credentials
-  
-#   As a Professional Dog Walker
-#   So that I can manage my dog walking account
-#   I can log in with my Facebook credentials
-  
-#   Background:
-#     Given I am on the login page
-#     And I follow "Login with Facebook"
-  
-#   @omniauth_test_success
-#   Scenario: A user successfully signs in with Facebook
-#     Then I should see "Login successful."
-    
-#   @omniauth_test_failure
-#   Scenario: A user unsuccessfully signs in with Facebook
-#     Then I should see "Failed."
-
-
-
+@facebook_test
 Feature: Users can use City Dog Share with their Facebook account
   As a City Dog Share user
   So that I can use the City Dog Share app
@@ -25,11 +6,11 @@ Feature: Users can use City Dog Share with their Facebook account
   
 Background:
   Given I am on the home page
-	
+  Then I should see "Login with Facebook"
+
 Scenario: Sign up with Facebook if I am a new user
   When I follow "Sign Up"
-  Then I should be on the users page for "Batman"
-
+  Then I should see "Welcome Bruce Wayne"
 
 Scenario: Sign up with Facebook if I am an existing user
   Given the following users exist:
@@ -59,4 +40,10 @@ Scenario: Log in when I already have an account
   | Wayne      | Bruce      | Bat Cave, Gotham City | male   | http://tinyurl.com/opnc38n | looking | (555)228-6261 | not_batman@wayneenterprises.com | I love bats  | not nights   |
   And I am on the home page
   When I follow "Login with Facebook"
-  Then I should be on the users page for "Batman"
+  Then I should see "Welcome Bruce Wayne"
+
+Scenario: log in when account does not exist
+  Given I am on the home page
+  When I follow "Login with Facebook"
+  Then I should be on the home page
+  And I should see "User does not exist"
