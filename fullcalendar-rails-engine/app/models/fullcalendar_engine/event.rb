@@ -1,3 +1,4 @@
+# :nocov:
 module FullcalendarEngine
   class Event < ActiveRecord::Base
 
@@ -56,3 +57,4 @@ module FullcalendarEngine
       end
   end
 end
+# :nocov:
