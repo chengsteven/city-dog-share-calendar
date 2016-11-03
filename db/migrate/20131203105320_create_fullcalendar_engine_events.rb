@@ -1,4 +1,3 @@
-# This migration comes from fullcalendar_engine (originally 20131203105320)
 class CreateFullcalendarEngineEvents < ActiveRecord::Migration
   def change
     create_table :fullcalendar_engine_events do |t|
