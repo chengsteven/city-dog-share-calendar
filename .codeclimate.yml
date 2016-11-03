@@ -15,3 +15,4 @@ exclude_paths:
 - spec/**
 - tmp/**
 - vendor/**
+- fullcalendar-rails-engine/**
