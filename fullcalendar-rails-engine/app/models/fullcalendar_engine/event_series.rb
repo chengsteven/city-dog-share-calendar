@@ -14,15 +14,9 @@ module FullcalendarEngine
       original_end_time = endtime
       current_weekday = starttime.wday
       checked_weekdays = [sunday, monday, tuesday, wednesday, thursday, friday, saturday]
-      if sunday # error checking
-        0/0
-      end
       (0...7).step(1) do |w|
-        if !checked_weekdays[w] and !( w == current_weekday and !checked_weekdays.include? true )
+        if !checked_weekdays[w]
           next
-        end
-        if (!checked_weekdays.include? true)
-          period = "monthly"
         end
         starttime = original_start_time + ((w - current_weekday) % 7).days
         endtime = original_end_time + ((w - current_weekday) % 7).days

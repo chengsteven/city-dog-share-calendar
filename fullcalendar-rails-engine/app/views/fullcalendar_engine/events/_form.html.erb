@@ -25,23 +25,15 @@
   <%=f.check_box :monday %>
   Mon
   <%=f.check_box :tuesday %>
-  <%=f.label :tuesday, "Tue" %>
+  Tue
   <%=f.check_box :wednesday %>
-  <%=f.label :wednesday, "Wed" %>
+  Wed
   <%=f.check_box :thursday %>
-  <%=f.label :thursday, "Thu" %>
+  Thu
   <%=f.check_box :friday %>
-  <%=f.label :friday, "Fri" %>
+  Fri
   <%=f.check_box :saturday %>
-  <%=f.label :saturday, "Sat" %>
-</p>
-<!-- <p>
-  <%=f.label :period, "Repeats" %>
-  <%=f.select :period, FullcalendarEngine::Event::REPEATS.values, {}, onchange: "FullcalendarEngine.Events.showPeriodAndFrequency(this.value);" %>
-</p> -->
-<p id = "frequency" style = "display:none;">
-  <%=f.label :frequency, "Repeat every" %>
-  <%=f.select :frequency, (1..30).to_a %> <span id = "period"></span>
+  Sat
 </p>
 <p>
   <%=f.submit %> <span id = "creating_events" class="spinner" style = "display:none;">Creating, Please wait...</span>
