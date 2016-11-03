@@ -1,10 +1,15 @@
 class User < ActiveRecord::Base
+  include ActiveModel::ForbiddenAttributesProtection
   
-  
-  attr_accessor :first_name, :last_name, :location, :gender, :image, :status, :phone_number, :email, :availability, :description, :address, :zipcode, :city, :country
+  # attr_accessor :first_name, :last_name, :location, :gender, :image, :status, :phone_number, :email, :availability, :description, :address, :zipcode, :city, :country
   def update_credentials(credentials)
-    self.oauth_token = credentials[:token]
-    self.oauth_expires_at = Time.at(credentials[:expires_at].to_i)
+    oauth = Koala::Facebook::OAuth.new("541018786093799", "b02e59087efb86f9afe137e2bc7b4200")
+    new_access_info = oauth.exchange_access_token_info(credentials[:token])
+    
+    new_access_token = new_access_info["access_token"]
+    self.oauth_token = new_access_token
+    new_access_expires_at = DateTime.now + new_access_info["expires"].to_i.seconds
+    self.oauth_expires_at = new_access_expires_at
     self.save 
   end
 

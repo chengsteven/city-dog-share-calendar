@@ -18,9 +18,9 @@ Rails.application.routes.draw do
   post 'users/:id/edit', to: 'users#edit'
   
   # You can have the root of your site routed with "root"
-  root  "kalendar#index"
+  root  "home#index"
   # resource 'home'
-  # get '/kalendar' => 'kalendar#index', as: :kalendar
+  get '/kalendar' => 'kalendar#index', as: :kalendar
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

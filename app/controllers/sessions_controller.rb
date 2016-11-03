@@ -2,14 +2,14 @@ class SessionsController < ApplicationController
   def create 
     @user = User.find(params[:user])
     session[:user_id] = @user.uid
-    redirect_to user_path(@user)
+    redirect_to kalendar_path()
   end
 
   def destroy
-    reset_session
-    redirect_to root_url, notice => 'Signed out'
-    # session[:user_id] = nil
-    # redirect_to root_path()
+    # reset_session
+    # redirect_to root_url, notice => 'Signed out'
+    session[:user_id] = nil
+    redirect_to root_path()
   end 
 
   def handle_failure
@@ -44,7 +44,7 @@ class SessionsController < ApplicationController
   def handle_auth 
     uid = request.env["omniauth.auth"][:uid]
     @user = User.find_by_uid(uid)
-
+    
     if request.env["omniauth.params"]["type"] == "login"
       redirect_to login_path(:user => @user, :credentials => request.env["omniauth.auth"][:credentials])
     else

@@ -44,13 +44,22 @@ ActiveRecord::Schema.define(version: 20161102035449) do
   add_index "fullcalendar_engine_events", ["event_series_id"], name: "index_fullcalendar_engine_events_on_event_series_id"
 
   create_table "users", force: :cascade do |t|
-    t.string   "provider"
     t.string   "uid"
     t.string   "name"
     t.string   "oauth_token"
     t.datetime "oauth_expires_at"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "last_name"
+    t.string   "first_name"
+    t.string   "location"
+    t.string   "gender"
+    t.string   "image"
+    t.string   "status"
+    t.string   "phone_number"
+    t.string   "email"
+    t.string   "description"
+    t.string   "availability"
   end
 
 end
