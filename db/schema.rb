@@ -14,38 +14,28 @@
 ActiveRecord::Schema.define(version: 20161114182325) do
 
   create_table "fullcalendar_engine_event_series", force: :cascade do |t|
-    t.integer  "frequency",  default: 1
-    t.string   "period",     default: "weekly"
-    t.datetime "starttime"
-    t.datetime "endtime"
-    t.boolean  "all_day",    default: false
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.boolean  "sunday",     default: false
-    t.boolean  "monday",     default: false
-    t.boolean  "tuesday",    default: false
-    t.boolean  "wednesday",  default: false
-    t.boolean  "thursday",   default: false
-    t.boolean  "friday",     default: false
-    t.boolean  "saturday",   default: false
-  end
-
-  create_table "fullcalendar_engine_events", force: :cascade do |t|
-    t.string   "title"
+    t.integer  "frequency",         default: 1
+    t.string   "period",            default: "weekly"
     t.datetime "starttime"
     t.datetime "endtime"
     t.boolean  "all_day",           default: false
-    t.text     "description"
-    t.integer  "event_series_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "sunday",            default: false
+    t.boolean  "monday",            default: false
+    t.boolean  "tuesday",           default: false
+    t.boolean  "wednesday",         default: false
+    t.boolean  "thursday",          default: false
+    t.boolean  "friday",            default: false
+    t.boolean  "saturday",          default: false
     t.decimal  "rate"
     t.boolean  "holiday_surcharge", default: false
     t.boolean  "allow_discount",    default: false
     t.boolean  "taxable",           default: false
   end
 
-  add_index "fullcalendar_engine_events", ["event_series_id"], name: "index_fullcalendar_engine_events_on_event_series_id"
+# Could not dump table "fullcalendar_engine_events" because of following NoMethodError
+#   undefined method `[]' for nil:NilClass
 
   create_table "users", force: :cascade do |t|
     t.string   "uid"

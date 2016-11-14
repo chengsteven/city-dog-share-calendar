@@ -1,7 +1,9 @@
 <%= form_for @event ||= FullcalendarEngine::Event.new, :html => { id: 'event_form' } do |f| %>
+<p>
 <%=f.label :title %>
 <br/>
 <%=f.text_field :title %>
+</p>
 <p>
   <%=f.label :description %>
   <br/>
