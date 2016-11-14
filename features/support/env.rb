@@ -73,23 +73,35 @@ Cucumber::Rails::Database.javascript_strategy = :truncation
 World(FactoryGirl::Syntax::Methods)
 
 
-Before('@omniauth_test_success') do
+# Snub out calls to facebook authentication and replace with mock hash
+Before('@facebook_test') do
   OmniAuth.config.test_mode = true
+  Capybara.default_host = 'http://facebook.com'
 
-  OmniAuth.config.mock_auth[:facebook] = {
-    "provider"  => "facebook",
-    "uid"       => '12345',
-    "user_info" => {
-      "email" => "email@email.com",
-      "first_name" => "John",
-      "last_name"  => "Doe",
-      "name"       => "John Doe"
-      # any other attributes you want to stub out for testing
-    }
-  }
+
+  OmniAuth.config.add_mock(:facebook, {
+    :uid => '12345',
+    :info => {
+      :name => 'Bruce Wayne',
+      :email => 'not_batman@wayneenterprises.com',
+      :first_name => 'Bruce',
+      :last_name => 'Wayne',
+      :image => 'http://tinyurl.com/opnc38n',
+      :urls => {:Facebook => 'https://www.facebook.com/batman'},
+      :nickname => 'batman',
+      :location => 'Bat Cave, Gotham City',
+      :verified => true
+    },
+    :credentials => {
+      :token => 'ABCDEF...', # OAuth 2.0 access_token, which you may wish to store
+      :expires_at => 1321747205, # when the access token expires (it always will)
+      :expires => true # this will always be true
+     },
+
+     :extra => {:gender => "Male"}
+  })
 end
 
-Before('@omniauth_test_failure') do
-  OmniAuth.config.test_mode = true
-  OmniAuth.config.mock_auth[:facebook] = :invalid_credentials
+After('@facebook_test') do
+  OmniAuth.config.test_mode = false
 end

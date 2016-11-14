@@ -11,30 +11,29 @@
 <p>
   <%=f.label :starttime, 'Start Time' %>
   <br/>
-  <%=f.time_select :starttime %>
+  <%=f.datetime_select :starttime %>
 </p>
 <p>
   <%=f.label :endtime, 'End Time' %>
   <br/>
-  <%=f.time_select :endtime %>
+  <%=f.datetime_select :endtime %>
 </p>
 <p>
   Repeats on: <br>
-  <label><input type="checkbox" id="form-sunday">Sun</label>
-  <label><input type="checkbox" id="form-monday">M</label>
-  <label><input type="checkbox" id="form-tuesday">Tu</label>
-  <label><input type="checkbox" id="form-wednesday">W</label>
-  <label><input type="checkbox" id="form-thursday">Th</label>
-  <label><input type="checkbox" id="form-friday">F</label>
-  <label><input type="checkbox" id="form-saturda">Sat</label>
-</p>
-<!-- <p>
-  <%=f.label :period, "Repeats" %>
-  <%=f.select :period, FullcalendarEngine::Event::REPEATS.values, {}, onchange: "FullcalendarEngine.Events.showPeriodAndFrequency(this.value);" %>
-</p> -->
-<p id = "frequency" style = "display:none;">
-  <%=f.label :frequency, "Repeat every" %>
-  <%=f.select :frequency, (1..30).to_a %> <span id = "period"></span>
+  <%=f.check_box :sunday %>
+  Sun
+  <%=f.check_box :monday %>
+  Mon
+  <%=f.check_box :tuesday %>
+  Tue
+  <%=f.check_box :wednesday %>
+  Wed
+  <%=f.check_box :thursday %>
+  Thu
+  <%=f.check_box :friday %>
+  Fri
+  <%=f.check_box :saturday %>
+  Sat
 </p>
 <p>
   <%=f.submit %> <span id = "creating_events" class="spinner" style = "display:none;">Creating, Please wait...</span>

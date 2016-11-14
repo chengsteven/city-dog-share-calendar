@@ -1,6 +1,11 @@
 <h2>Welcome to the City Dog Share calendar app</h2>
 <ul>
-  <li>
-    <%=link_to 'Login with Facebook', "/auth/facebook/?type=login" %> 
-  </li>
+  <li><a href="/auth/facebook/?type=login" id="log_in">Login with Facebook</a></li>
+  <li><a href="/auth/facebook/?type=signup" id="sign_up">Sign Up</a></li>
 </ul>
+<% if flash[:notice] %>
+  <div class="ui warning message"><i class="warning icon"></i>
+    <%= flash[:notice] %>
+      <br>
+  </div>
+<% end %>

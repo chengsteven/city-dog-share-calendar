@@ -1,7 +1,8 @@
+# :nocov:
 module FullcalendarEngine
   class Event < ActiveRecord::Base
 
-    attr_accessor :period, :frequency, :commit_button
+    attr_accessor :period, :frequency, :commit_button, :sunday, :monday, :tuesday, :wednesday, :thursday, :friday, :saturday
 
     validates :title, :description, :starttime, :endtime, :presence => true
     validate :validate_timings
@@ -15,7 +16,7 @@ module FullcalendarEngine
       :months    => "Monthly",
       :years     => "Yearly"
     }
-    
+
     def validate_timings
       if starttime.present? and endtime.present?
         if (starttime >= endtime) and !all_day
@@ -26,11 +27,11 @@ module FullcalendarEngine
 
     def update_events(events, event)
       events.each do |e|
-        begin 
+        begin
           old_start_time, old_end_time = e.starttime, e.endtime
           e.attributes = event
           if event_series.period.downcase == 'monthly' or event_series.period.downcase == 'yearly'
-            new_start_time = make_date_time(e.starttime, old_start_time) 
+            new_start_time = make_date_time(e.starttime, old_start_time)
             new_end_time   = make_date_time(e.starttime, old_end_time, e.endtime)
           else
             new_start_time = make_date_time(e.starttime, old_end_time)
@@ -44,7 +45,7 @@ module FullcalendarEngine
           e.save
         end
       end
-      
+
       event_series.attributes = event
       event_series.save
     end
@@ -53,6 +54,7 @@ module FullcalendarEngine
 
       def make_date_time(original_time, difference_time, event_time = nil)
         DateTime.parse("#{original_time.hour}:#{original_time.min}:#{original_time.sec}, #{event_time.try(:day) || difference_time.day}-#{difference_time.month}-#{difference_time.year}")
-      end 
+      end
   end
 end
+# :nocov:
