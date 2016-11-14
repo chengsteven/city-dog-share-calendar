@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161102035449) do
+ActiveRecord::Schema.define(version: 20161114182325) do
 
   create_table "fullcalendar_engine_event_series", force: :cascade do |t|
     t.integer  "frequency",  default: 1
@@ -34,11 +34,15 @@ ActiveRecord::Schema.define(version: 20161102035449) do
     t.string   "title"
     t.datetime "starttime"
     t.datetime "endtime"
-    t.boolean  "all_day",         default: false
+    t.boolean  "all_day",           default: false
     t.text     "description"
     t.integer  "event_series_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.decimal  "rate"
+    t.boolean  "holiday_surcharge", default: false
+    t.boolean  "allow_discount",    default: false
+    t.boolean  "taxable",           default: false
   end
 
   add_index "fullcalendar_engine_events", ["event_series_id"], name: "index_fullcalendar_engine_events_on_event_series_id"

@@ -107,7 +107,8 @@ module FullcalendarEngine
     end
 
     def event_params
-      params.require(:event).permit('sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday',
+      params.require(:event).permit('rate', 'holiday_surcharge', 'allow_discount', 'taxable',
+            'sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday',
             'title', 'description', 'starttime', 'endtime', 'all_day', 'period', 'frequency', 'commit_button')
     end
 
