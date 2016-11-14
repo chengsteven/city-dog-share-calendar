@@ -7,6 +7,7 @@ class CreateFullcalendarEngineEvents < ActiveRecord::Migration
       t.text :description
       t.integer :event_series_id
       t.timestamps
+      t.integer :user_id
     end
     add_index :fullcalendar_engine_events, :event_series_id
   end
