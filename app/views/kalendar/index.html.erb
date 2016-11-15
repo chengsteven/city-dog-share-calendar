@@ -1,12 +1,10 @@
 <div id = "kalendar">
-    <h2>City Dog Share</h2>
-    <h3><%= "Welcome " + @user.full_name%></h3>
-    <a id="new_event" href="#">Create Event</a>
-    <div>
-    <div class="calendar"></div>
-    </div>
-    <div id = "create_event_dialog" class="dialog" style ="display:none;"></div>
-    <div id = "event_desc_dialog" class="dialog" style ="display:none;"></div>
+<h2>City Dog Share</h2>
+<h3><%= "Welcome " + @user.full_name%></h3>
+<a id="new_event" href="#">Create Event</a>
+<%= link_to "Log Out", signout_path, :method => :delete %>
+<div>
+<div class="calendar"></div>
 </div>
 <script type="text/javascript">
 $('.calendar').fullCalendar(full_calendar_options);

@@ -1,4 +1,6 @@
 @import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,900");
+@import "font-awesome-sprockets";
+@import "font-awesome";
 @import url("font-awesome.min.css");
 
 /*
@@ -98,25 +100,25 @@
 			border-color: transparent;
 		}
 
-// /* Icon */
+/* Icon */
 
-// 	.icon {
-// 		text-decoration: none;
-// 		position: relative;
-// 	}
+	.icon {
+		text-decoration: none;
+		position: relative;
+	}
 
-// 		.icon:before {
-// 			-moz-osx-font-smoothing: grayscale;
-// 			-webkit-font-smoothing: antialiased;
-// 		// 	font-family: FontAwesome;
-// 		// 	font-style: normal;
-// 		// 	font-weight: normal;
-// 			text-transform: none !important;
-// 		}
+		.icon:before {
+			-moz-osx-font-smoothing: grayscale;
+			-webkit-font-smoothing: antialiased;
+			font-family: FontAwesome;
+			font-style: normal;
+			font-weight: normal;
+			text-transform: none !important;
+		}
 
-// 		.icon > .fb {
-// 			font-size: 2.25em;
-// 		}
+		.icon > .fb {
+			font-size: 2.25em;
+		}
 
 /* Wrapper */
 

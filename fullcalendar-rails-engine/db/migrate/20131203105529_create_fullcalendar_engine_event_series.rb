@@ -7,6 +7,7 @@ class CreateFullcalendarEngineEventSeries < ActiveRecord::Migration
       t.datetime :endtime
       t.boolean :all_day, :default => false
       t.timestamps
+      t.integer :user_id
     end
   end
 end
