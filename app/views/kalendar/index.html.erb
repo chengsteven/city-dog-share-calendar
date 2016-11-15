@@ -1,7 +1,7 @@
 <h2>City Dog Share</h2>
 <h3><%= "Welcome " + @user.full_name%></h3>
 <a id="new_event" href="#">Create Event</a>
-<a href="/auth/facebook/?type=signout" id="sign_out">Log Out</a>
+<%= link_to "Log Out", signout_path, :method => :delete %>
 <div>
 <div class="calendar"></div>
 </div>
