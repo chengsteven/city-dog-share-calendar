@@ -10,10 +10,7 @@ module FullcalendarEngine
     before_filter :current_user
 
     def create
-      # @event.user_id = current_user.id
-      # print "*************************************************" + @event.user_id.to_s
       if @event.save
-        # print "*************************************************" + @event.user_id.to_s
         render nothing: true
       else
         render text: @event.errors.full_messages.to_sentence, status: 422
@@ -29,8 +26,6 @@ module FullcalendarEngine
     def get_events
       start_time = Time.at(params[:start].to_i).to_formatted_s(:db)
       end_time   = Time.at(params[:end].to_i).to_formatted_s(:db)
-      print current_user.id
-      print Event.all.map { |event| event.user_id }
       @events = Event.where('
                   (starttime >= :start_time and endtime <= :end_time) or
                   (starttime >= :start_time and endtime > :end_time and starttime <= :end_time) or
@@ -129,7 +124,6 @@ module FullcalendarEngine
       else
         @event = EventSeries.new(event_params)
       end
-      # print "*************************************************" + session[:user_id].to_s
     end
 
     def make_time_from_minute_and_day_delta(event_time)
