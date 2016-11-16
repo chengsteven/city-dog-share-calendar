@@ -13,13 +13,14 @@ Background:
 Scenario: Cannot see a calendar if not signed in
   When I visit the calendar page
   Then I should be on the home page
-  And I should see "You must be signed in to view your calendar."
+  And I should see the Facebook icon
+  And I should not see the calendar
 
 Scenario: Can see only your own events if signed in
   Given I am on the home page
   And an appointment called Bruce exists today for user "Bruce"
   And an appointment called Jane exists today for user "Jane"
-  And I follow "Login with Facebook"
+  And I log in with Facebook
   Then I should see an appointment called Bruce
   Then I should not see an appointment called Jane
 
