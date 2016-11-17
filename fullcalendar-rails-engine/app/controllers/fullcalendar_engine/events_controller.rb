@@ -2,7 +2,7 @@ require_dependency 'fullcalendar_engine/application_controller'
 
 module FullcalendarEngine
   class EventsController < ApplicationController
-  
+
     layout FullcalendarEngine::Configuration['layout'] || 'application'
 
     before_filter :load_event, only: [:edit, :update, :destroy, :move, :resize]
@@ -108,7 +108,8 @@ module FullcalendarEngine
     end
 
     def event_params
-      params.require(:event).permit('sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday',
+      params.require(:event).permit('rate', 'holiday_surcharge', 'allow_discount', 'taxable',
+            'sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday',
             'title', 'description', 'starttime', 'endtime', 'all_day', 'period', 'frequency', 'commit_button', 'user_id')
     end
 
@@ -129,7 +130,7 @@ module FullcalendarEngine
     def make_time_from_minute_and_day_delta(event_time)
       params[:minute_delta].to_i.minutes.from_now((params[:day_delta].to_i).days.from_now(event_time))
     end
-    
+
     def current_user
       @current_user ||= User.find_by_uid(session[:user_id]) if session[:user_id]
     end

@@ -14,20 +14,24 @@
 ActiveRecord::Schema.define(version: 20161114190435) do
 
   create_table "fullcalendar_engine_event_series", force: :cascade do |t|
-    t.integer  "frequency",  default: 1
-    t.string   "period",     default: "weekly"
+    t.integer  "frequency",         default: 1
+    t.string   "period",            default: "weekly"
     t.datetime "starttime"
     t.datetime "endtime"
-    t.boolean  "all_day",    default: false
+    t.boolean  "all_day",           default: false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "sunday",     default: false
-    t.boolean  "monday",     default: false
-    t.boolean  "tuesday",    default: false
-    t.boolean  "wednesday",  default: false
-    t.boolean  "thursday",   default: false
-    t.boolean  "friday",     default: false
-    t.boolean  "saturday",   default: false
+    t.boolean  "sunday",            default: false
+    t.boolean  "monday",            default: false
+    t.boolean  "tuesday",           default: false
+    t.boolean  "wednesday",         default: false
+    t.boolean  "thursday",          default: false
+    t.boolean  "friday",            default: false
+    t.boolean  "saturday",          default: false
+    t.decimal  "rate"
+    t.boolean  "holiday_surcharge", default: false
+    t.boolean  "allow_discount",    default: false
+    t.boolean  "taxable",           default: false
   end
 
   create_table "fullcalendar_engine_events", force: :cascade do |t|
@@ -39,6 +43,7 @@ ActiveRecord::Schema.define(version: 20161114190435) do
     t.integer  "event_series_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "dogs"
     t.integer  "user_id"
   end
 
