@@ -66,3 +66,8 @@ end
 
 gem 'omniauth-facebook'
 gem 'koala', '2.0.0'
+
+gem 'bootstrap-sass', '~> 3.2.0'
+
+gem 'font-awesome-sass', '~> 4.7.0'
+gem 'font-awesome-rails'

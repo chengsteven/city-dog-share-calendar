@@ -62,6 +62,11 @@ When /^(?:|I )follow "([^"]*)"$/ do |link|
   click_link(link)
 end
 
+When(/^I log in with Facebook$/) do
+  find('a.icon.fa-facebook').click
+end
+
+
 When /^(?:|I )fill in "([^"]*)" with "([^"]*)"$/ do |field, value|
   fill_in(field, :with => value)
 end
@@ -120,6 +125,14 @@ Then /^(?:|I )should see \/([^\/]*)\/$/ do |regexp|
   else
     assert page.has_xpath?('//*', :text => regexp)
   end
+end
+
+Then(/^I should see the Facebook icon$/) do
+  page.should have_css('a.icon.fa-facebook')
+end
+
+Then(/^I should not see the calendar$/) do
+  page.should_not have_css('kalendar')
 end
 
 Then /^(?:|I )should not see "([^"]*)"$/ do |text|
