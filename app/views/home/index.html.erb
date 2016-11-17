@@ -1,11 +1,50 @@
-<h2>Welcome to the City Dog Share calendar app</h2>
-<ul>
-  <li><a href="/auth/facebook/?type=login" id="log_in">Login with Facebook</a></li>
-  <li><a href="/auth/facebook/?type=signup" id="sign_up">Sign Up</a></li>
-</ul>
-<% if flash[:notice] %>
-  <div class="ui warning message"><i class="warning icon"></i>
-    <%= flash[:notice] %>
-      <br>
-  </div>
-<% end %>
+<!DOCTYPE HTML>
+<!--
+	Aerial by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<div id="landing_page">
+	<head>
+		<title>City Dog Share</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
+		<!-- <link rel="stylesheet" href="/assets/css/application.css" /> -->
+		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+		<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
+	</head>
+	<body class="loading">
+		<div id="wrapper">
+			<div id="bg"></div>
+			<div id="overlay"></div>
+			<div id="main">
+
+				<!-- Header -->
+					<header id="header">
+						<h1>City Dog Share</h1>
+						<p>An App For Professional Dog Walkers</p>
+						<nav>
+							<ul>
+								<li><a href="/auth/facebook/?type=login" class="icon fa-facebook"  id="log_in"><span class="label">Facebook</span></a></li>
+							</ul>
+						</nav>
+					</header>
+
+				<!-- Footer -->
+					<footer id="footer">
+						<span class="copyright">&copy; City Dog Share. Design: <a href="http://html5up.net">HTML5 UP</a>.</span>
+					</footer>
+
+			</div>
+		</div>
+		<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+		<script>
+			window.onload = function() { document.body.className = ''; }
+			window.ontouchmove = function() { return false; }
+			window.onorientationchange = function() { document.body.scrollTop = 0; }
+		</script>
+	</body>
+	</div>
+</html>

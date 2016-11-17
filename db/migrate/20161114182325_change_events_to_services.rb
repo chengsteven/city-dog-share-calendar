@@ -7,6 +7,6 @@ class ChangeEventsToServices < ActiveRecord::Migration
     add_column :fullcalendar_engine_event_series, :allow_discount, :boolean, :default => false
     add_column :fullcalendar_engine_event_series, :taxable, :boolean, :default => false
 
-    add_column :fullcalendar_engine_events, :dogs, :json
+    add_column :fullcalendar_engine_events, :dogs, :string
   end
 end

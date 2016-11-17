@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161114182325) do
+ActiveRecord::Schema.define(version: 20161114190435) do
 
   create_table "fullcalendar_engine_event_series", force: :cascade do |t|
     t.integer  "frequency",         default: 1
@@ -34,8 +34,21 @@ ActiveRecord::Schema.define(version: 20161114182325) do
     t.boolean  "taxable",           default: false
   end
 
-# Could not dump table "fullcalendar_engine_events" because of following NoMethodError
-#   undefined method `[]' for nil:NilClass
+  create_table "fullcalendar_engine_events", force: :cascade do |t|
+    t.string   "title"
+    t.datetime "starttime"
+    t.datetime "endtime"
+    t.boolean  "all_day",         default: false
+    t.text     "description"
+    t.integer  "event_series_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "dogs"
+    t.integer  "user_id"
+  end
+
+  add_index "fullcalendar_engine_events", ["event_series_id"], name: "index_fullcalendar_engine_events_on_event_series_id"
+  add_index "fullcalendar_engine_events", ["user_id"], name: "index_fullcalendar_engine_events_on_user_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "uid"
