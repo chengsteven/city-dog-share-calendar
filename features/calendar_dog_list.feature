@@ -1,7 +1,7 @@
 Feature:
   As a professional dog walker
-  So that I can charge the dog owners for the dogs I have walked this month
-  I want to be able to see a summary of dogs walked and how much each owner owes for the month
+  So that I can walk dogs
+  I want to be able to see which dogs I am responsible for walking
 
 Background:
    Given the following users exist:
@@ -10,18 +10,16 @@ Background:
    And I am signed in as "Bruce Wayne"
    And I am on the calendar page
 
-Scenario: Seeing monthly report
+Scenario: Add a dog and see it in the list
     Given skip
     Given an appointment called DogWalk exists today for user "Bruce Wayne"
-    When I click on "Monthly Summary"
-    And I fill in "11/16"
-    And I click "Generate report"
-    Then I should be on the summary page
-    Then I should see "Dogwalk"
+    When I click on the DogWalk event
+    And I click edit
+    And I add a dog called Alfred with owner Rachel
+    Then I should see Alfred
 
-Scenario: No report if no appointments in past month
+Scenario: If there are no dogs, I should see no dogs
     Given skip
-    When I click on "Monthly Summary"
-    And I fill in "11/16"
-    And I click "Generate report"
-    Then I should see "No services rendered during this month"
+    Given an appointment called DogWalk exists today for user "Bruce Wayne"
+    When I click on the DogWalk event
+    Then I should see no dogs
