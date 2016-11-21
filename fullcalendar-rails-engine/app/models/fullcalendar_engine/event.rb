@@ -3,11 +3,13 @@ module FullcalendarEngine
   class Event < ActiveRecord::Base
 
     attr_accessor :period, :frequency, :commit_button, :sunday, :monday, :tuesday, :wednesday, :thursday, :friday, :saturday
+    attr_accessor :rate, :holiday_surcharge, :allow_discount, :taxable
 
     validates :title, :description, :starttime, :endtime, :presence => true
     validate :validate_timings
 
     belongs_to :event_series
+    belongs_to :user
 
     REPEATS = {
       :no_repeat => "Does not repeat",

@@ -1,7 +1,6 @@
 class User < ActiveRecord::Base
   include ActiveModel::ForbiddenAttributesProtection
-  
-  # attr_accessor :first_name, :last_name, :location, :gender, :image, :status, :phone_number, :email, :availability, :description, :address, :zipcode, :city, :country
+  has_many :events, :dependent => :destroy
   def update_credentials(credentials)
     self.oauth_token = credentials[:token]
     self.oauth_expires_at = Time.at(credentials[:expires_at].to_i)

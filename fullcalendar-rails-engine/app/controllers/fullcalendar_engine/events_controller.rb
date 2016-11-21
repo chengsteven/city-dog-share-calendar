@@ -7,6 +7,7 @@ module FullcalendarEngine
 
     before_filter :load_event, only: [:edit, :update, :destroy, :move, :resize]
     before_filter :determine_event_type, only: :create
+    before_filter :current_user
 
     def create
       if @event.save
@@ -25,13 +26,13 @@ module FullcalendarEngine
     def get_events
       start_time = Time.at(params[:start].to_i).to_formatted_s(:db)
       end_time   = Time.at(params[:end].to_i).to_formatted_s(:db)
-
       @events = Event.where('
                   (starttime >= :start_time and endtime <= :end_time) or
                   (starttime >= :start_time and endtime > :end_time and starttime <= :end_time) or
                   (starttime <= :start_time and endtime >= :start_time and endtime <= :end_time) or
                   (starttime <= :start_time and endtime > :end_time)',
                   start_time: start_time, end_time: end_time)
+      @events = @events.where(user_id: current_user.id)
       events = []
       @events.each do |event|
         events << { id: event.id,
@@ -107,8 +108,9 @@ module FullcalendarEngine
     end
 
     def event_params
-      params.require(:event).permit('sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday',
-            'title', 'description', 'starttime', 'endtime', 'all_day', 'period', 'frequency', 'commit_button')
+      params.require(:event).permit('rate', 'holiday_surcharge', 'allow_discount', 'taxable',
+            'sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday',
+            'title', 'description', 'starttime', 'endtime', 'all_day', 'period', 'frequency', 'commit_button', 'user_id')
     end
 
     def determine_event_type
@@ -117,6 +119,7 @@ module FullcalendarEngine
       if !weekday_checkboxes.include? "1"
         params[:event][:period] = "Does not repeat"
       end
+      params[:event][:user_id] = current_user.id
       if params[:event][:period] == "Does not repeat"
         @event = Event.new(event_params)
       else
@@ -126,6 +129,10 @@ module FullcalendarEngine
 
     def make_time_from_minute_and_day_delta(event_time)
       params[:minute_delta].to_i.minutes.from_now((params[:day_delta].to_i).days.from_now(event_time))
+    end
+
+    def current_user
+      @current_user ||= User.find_by_uid(session[:user_id]) if session[:user_id]
     end
   end
 end
