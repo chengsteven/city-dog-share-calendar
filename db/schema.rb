@@ -28,7 +28,7 @@ ActiveRecord::Schema.define(version: 20161114190435) do
     t.boolean  "thursday",          default: false
     t.boolean  "friday",            default: false
     t.boolean  "saturday",          default: false
-    t.decimal  "rate"
+    t.decimal  "rate",              default: 0.0
     t.boolean  "holiday_surcharge", default: false
     t.boolean  "allow_discount",    default: false
     t.boolean  "taxable",           default: false
