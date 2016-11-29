@@ -96,3 +96,35 @@ end
 Given(/^I specify to repeat every "([^"]*)"$/) do |arg1|
   pending # Write code here that turns the phrase above into concrete actions
 end
+
+When(/^I click on the DogWalk event$/) do
+  pending # Write code here that turns the phrase above into concrete actions
+end
+
+When(/^I click edit$/) do
+  pending # Write code here that turns the phrase above into concrete actions
+end
+
+When(/^I add a dog called Alfred with owner Rachel$/) do
+  pending # Write code here that turns the phrase above into concrete actions
+end
+
+Then(/^I should see Alfred$/) do
+  pending # Write code here that turns the phrase above into concrete actions
+end
+
+Then(/^I should see no dogs$/) do
+  pending # Write code here that turns the phrase above into concrete actions
+end
+
+When(/^I click on "([^"]*)"$/) do |arg1|
+  pending # Write code here that turns the phrase above into concrete actions
+end
+
+When(/^I fill in "([^"]*)"$/) do |arg1|
+  pending # Write code here that turns the phrase above into concrete actions
+end
+
+When(/^I click "([^"]*)"$/) do |arg1|
+  pending # Write code here that turns the phrase above into concrete actions
+end
