@@ -110,16 +110,20 @@ FullcalendarEngine = {
     },
     showEventDetails: function(event){
       $('#event_desc_dialog').html('')
+      console.log(event)
       $event_description  = $('<div />').html(event.description).attr("id", "edit_event_description")
       $event_rate  = $('<div />').html('Rate: $' + event.rate).attr("id", "edit_event_rate")
-      $event_holiday_surcharge = $('<div />').html('Holiday Surcharge: ' + event.holiday_surcharge == "1").attr("id", "edit_event_holiday_surcharge")
-      $event_allow_discount  = $('<div />').html('Allow Discount: ' + event.allow_discount == "1").attr("id", "edit_event_allow_discount")
-      $event_taxable = $('<div />').html('Taxable: ' + event.taxable == "1").attr("id", "edit_event_taxable")
+      $event_holiday_surcharge = $('<div />').html('Holiday Surcharge: ' + event.holiday_surcharge).attr("id", "edit_event_holiday_surcharge")
+      $event_allow_discount  = $('<div />').html('Allow Discount: ' + event.allow_discount).attr("id", "edit_event_allow_discount")
+      $event_taxable = $('<div />').html('Taxable: ' + event.taxable).attr("id", "edit_event_taxable")
       var dog_list = JSON.parse(event.dogs)
       var dog_list_string = ''
       for(var i = 0; i < dog_list.length; i++) {
         var current_dog = dog_list[i]
-        dog_list_string += current_dog['dog_name'] + ': ' + current_dog['dog_notes'] + '<br>'
+        var neutuered = current_dog['fixed'] == "1" ? "" : " not "
+        dog_list_string += current_dog['dog_name'] + " is " + neutuered + "neutuered and "+ 'lives at ' + current_dog['dog_address'] +
+        '. Contact his owner ' + current_dog['dog_owner'] + ' at ' + current_dog['dog_phone_num'] + '. Notes: '
+         + current_dog['dog_notes'] + '<br>'
       }
       $event_dogs  = $('<div />').html(dog_list_string).attr("id", "edit_event_dogs")
       $event_actions      = $('<div />').attr("id", "event_actions")
