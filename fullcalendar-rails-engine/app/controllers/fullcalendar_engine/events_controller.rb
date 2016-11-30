@@ -41,7 +41,9 @@ module FullcalendarEngine
                     start: event.starttime.iso8601,
                     end: event.endtime.iso8601,
                     allDay: event.all_day,
-                    recurring: (event.event_series_id) ? true : false}
+                    recurring: (event.event_series_id) ? true : false,
+                    rate: event.rate,
+                    dogs: event.dogs}
       end
       render json: events.to_json
     end
@@ -141,15 +143,16 @@ module FullcalendarEngine
       all_dogs = []
       current_dog = 'dog' + counter.to_s
       while dog_hash.key? current_dog
-        all_dogs.append( {'dog_name' => dog_hash[current_dog]['name'],
+        all_dogs.push << {'dog_name' => dog_hash[current_dog]['name'],
                           'dog_owner' => dog_hash[current_dog]['owner'],
                           'dog_address' => dog_hash[current_dog]['address'],
                           'dog_phone_num' => dog_hash[current_dog]['phoneNum'],
                           'dog_fixed' => dog_hash[current_dog]['fixed'],
-                          'dog_notes' => dog_hash[current_dog]['notes']} )
+                          'dog_notes' => dog_hash[current_dog]['notes']}
         counter += 1
-      return JSON.generate(all_dogs)
+        current_dog = 'dog' + counter.to_s
       end
+      return JSON.generate(all_dogs)
     end
   end
 end
