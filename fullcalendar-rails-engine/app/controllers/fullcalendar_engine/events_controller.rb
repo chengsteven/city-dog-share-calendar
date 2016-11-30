@@ -110,6 +110,7 @@ module FullcalendarEngine
     end
 
     def event_params
+      params[:event][:dogs] = parse_dog_params_to_json(params[:dogs])
       params.require(:event).permit('dogs', 'rate', 'holiday_surcharge', 'allow_discount', 'taxable',
             'sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday',
             'title', 'description', 'starttime', 'endtime', 'all_day', 'period', 'frequency', 'commit_button', 'user_id')
@@ -118,7 +119,6 @@ module FullcalendarEngine
     def determine_event_type
       weekday_checkboxes = [params[:event][:sunday], params[:event][:monday], params[:event][:tuesday],
          params[:event][:wednesday], params[:event][:thursday], params[:event][:friday], params[:event][:saturday]]
-      params[:event][:dogs] = parse_dog_params_to_json(params[:dogs])
       if !weekday_checkboxes.include? "1"
         params[:event][:period] = "Does not repeat"
       end
@@ -142,7 +142,7 @@ module FullcalendarEngine
       counter = 1
       all_dogs = []
       current_dog = 'dog' + counter.to_s
-      while dog_hash.key? current_dog
+      dog_hash.each do |current_dog, value|
         all_dogs.push << {'dog_name' => dog_hash[current_dog]['name'],
                           'dog_owner' => dog_hash[current_dog]['owner'],
                           'dog_address' => dog_hash[current_dog]['address'],
