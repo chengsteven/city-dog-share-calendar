@@ -94,28 +94,33 @@ Dogs to walk: <br>
   }
 
   function addDogRow(dog) {
+    console.log(dog)
     form_row_ctr++;
-      var dogName = "dogs[dog" + form_row_ctr + "][name]";
-      var dogOwner = "dogs[dog" + form_row_ctr + "][owner]";
-      var address = "dogs[dog" + form_row_ctr + "][address]";
-      var phoneNum = "dogs[dog" + form_row_ctr + "][phoneNum]";
-      var fixed = "dogs[dog" + form_row_ctr + "][fixed]";
-      var notes = "dogs[dog" + form_row_ctr + "][notes]";
-      var dogNameVal = dog['dog_name'];
-      var dogOwnerVal = dog['dog_owner'];
-      var addressVal = dog['dog_address'];
-      var phoneNumVal = dog['dog_phone_num'];
-      var fixedVal = dog['dog_fixed'];
-      var notesVal = dog['dog_notes'];
-      var newTr = '<tr>\
-        <td><input type="text" name=' + dogName + ' value = "' + dogNameVal + '"/></td>\
-        <td><input type="text" name=' + dogOwner + ' value = "' + dogOwnerVal + '"/></td>\
-        <td><input type="text" name=' + address + ' value = "' + addressVal + '"/></td>\
-        <td><input type="text" name=' + phoneNum + ' value = "' + phoneNumVal + '"/></td>\
-        <td><input type="checkbox" name=' + fixed + ' value="' + fixedVal + '" /></td>\
-        <td><input type="text" name=' + notes + ' value = "' + notesVal + '"/><td>\
-        <td><input type="button" value="Delete" onclick="deleteRow(this)"/></td></tr>';
-      $('#myTable').append(newTr);
+    var dogName = "dogs[dog" + form_row_ctr + "][name]";
+    var dogOwner = "dogs[dog" + form_row_ctr + "][owner]";
+    var address = "dogs[dog" + form_row_ctr + "][address]";
+    var phoneNum = "dogs[dog" + form_row_ctr + "][phoneNum]";
+    var fixed = "dogs[dog" + form_row_ctr + "][fixed]";
+    var notes = "dogs[dog" + form_row_ctr + "][notes]";
+    var dogNameVal = dog['dog_name'];
+    var dogOwnerVal = dog['dog_owner'];
+    var addressVal = dog['dog_address'];
+    var phoneNumVal = dog['dog_phone_num'];
+    var fixedVal = dog['dog_fixed'];
+    var notesVal = dog['dog_notes'];
+    var checked = ""
+    if (fixedVal == "1") {
+      checked = "checked"
+    }
+    var newTr = '<tr>\
+    <td><input type="text" name=' + dogName + ' value="' + dogNameVal + '"/></td>\
+    <td><input type="text" name=' + dogOwner + ' value="' + dogOwnerVal + '"/></td>\
+    <td><input type="text" name=' + address + ' value="' + addressVal + '"/></td>\
+    <td><input type="text" name=' + phoneNum + ' value="' + phoneNumVal + '"/></td>\
+    <td><input type="checkbox" name=' + fixed + ' value="' + fixedVal + '" ' + checked + '/></td>\
+    <td><input type="text" name=' + notes + ' value="' + notesVal + '"/>\
+    <td><input type="button" value="Delete" onclick="deleteRow(this)"/></td></tr>';
+    $('#myTable').append(newTr);
   }
 
   $('#btnAdd').on('click', function () {
