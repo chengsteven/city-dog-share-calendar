@@ -47,31 +47,6 @@ Dogs to walk: <br>
     <th>Phone #</th>
     <th>Spayed/Neutered</th>
     <th>Notes</th>
-    <!-- <tr>
-        <td>
-            <input type="text" name="dogs[dog1][name]" value="" />
-        </td>
-        <td>
-            <input type="text" name="dogs[dog1][owner]" value="" />
-        </td>
-        <td>
-            <input type="text" name="dogs[dog1][address]" value="" />
-        </td>
-        <td>
-            <input type="text" name="dogs[dog1][phoneNum]" value="" />
-        </td>
-        <td>
-            <input type="hidden" name="dogs[dog1][fixed]" value="0" />
-            <input type="checkbox" name="dogs[dog1][fixed]" value="1" />
-
-        </td>
-        <td>
-            <input type="text" name="dogs[dog1][notes]" value="" />
-        </td>
-        <td>
-          <input type="button" value="Delete" onclick="deleteRow(this)"/>
-        </td>
-    </tr> -->
 </table>
 <a id="btnAdd">Add a new dog</a>
 </p>
@@ -81,6 +56,7 @@ Dogs to walk: <br>
   $('#edit_event_dogs').hide()
   var dogs_list = $('.temp_information').data('temp')['dogs']
   dogs_list = JSON.parse(dogs_list)
+  console.log(dogs_list)
   for(var i = 0; i < dogs_list.length; i++) {
     var current_dog = dogs_list[i]
     addDogRow(current_dog)

@@ -43,7 +43,10 @@ module FullcalendarEngine
                     allDay: event.all_day,
                     recurring: (event.event_series_id) ? true : false,
                     rate: event.rate,
-                    dogs: event.dogs}
+                    dogs: event.dogs,
+                    holiday_surcharge: event.holiday_surcharge,
+                    allow_discount: event.allow_discount,
+                    taxable: event.taxable}
       end
       render json: events.to_json
     end
