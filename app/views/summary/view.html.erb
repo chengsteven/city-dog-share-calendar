@@ -93,13 +93,7 @@
                     <table>
                         <tr>
                             <td class="title">
-                                <img src="http://nextstepwebs.com/images/logo.png" style="width:100%; max-width:300px;">
-                            </td>
-                            
-                            <td>
-                                Invoice #: 123<br>
-                                Created: January 1, 2015<br>
-                                Due: February 1, 2015
+                                <img src="https://s3-media3.fl.yelpcdn.com/bphoto/pg5slq8q3SvHG_bwGIHlBA/ls.jpg" style="width:100%; max-width:100px;">
                             </td>
                         </tr>
                     </table>
@@ -111,38 +105,17 @@
                     <table>
                         <tr>
                             <td>
-                                Next Step Webs, Inc.<br>
-                                12345 Sunny Road<br>
-                                Sunnyville, TX 12345
+                                Summary<br>
+                                For the month of: <%= I18n.l(Time.now, format: "%B")%>
                             </td>
                             
                             <td>
-                                Acme Corp.<br>
-                                <%= @user.full_name%><br>
-                                john@example.com
+                                Professional Dog Walker<br>
+                                <%= @current_user.full_name%><br>
+                                <%= @current_user.email%>
                             </td>
                         </tr>
                     </table>
-                </td>
-            </tr>
-            
-            <tr class="heading">
-                <td>
-                    Payment Method
-                </td>
-                
-                <td>
-                    Check #
-                </td>
-            </tr>
-            
-            <tr class="details">
-                <td>
-                    Check
-                </td>
-                
-                <td>
-                    1000
                 </td>
             </tr>
             
