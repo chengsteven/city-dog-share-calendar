@@ -37,9 +37,6 @@ Given /^my authentication fails$/ do
   visit "/auth/failure"
 end
 
-When /^(?:|I )press "([^"]*)"$/ do |button|
-  click_button(button)
-end
 When /^(?:|I )follow the first "([^"]*)"$/ do |link|
   first(:link, link).click
 end
