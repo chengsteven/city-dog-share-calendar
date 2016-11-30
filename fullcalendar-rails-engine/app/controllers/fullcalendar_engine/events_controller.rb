@@ -42,7 +42,7 @@ module FullcalendarEngine
                     end: event.endtime.iso8601,
                     allDay: event.all_day,
                     recurring: (event.event_series_id) ? true : false,
-                    rate: event.rate,
+                    rate: event.rate.to_i,
                     dogs: event.dogs}
       end
       render json: events.to_json
