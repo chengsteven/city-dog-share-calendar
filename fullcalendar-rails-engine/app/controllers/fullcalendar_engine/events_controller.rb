@@ -110,12 +110,14 @@ module FullcalendarEngine
     def event_params
       params.require(:event).permit('rate', 'holiday_surcharge', 'allow_discount', 'taxable',
             'sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday',
-            'title', 'description', 'starttime', 'endtime', 'all_day', 'period', 'frequency', 'commit_button', 'user_id')
+            'title', 'description', 'starttime', 'endtime', 'all_day', 'period', 'frequency', 'commit_button', 'user_id',
+            'dogs')
     end
 
     def determine_event_type
       weekday_checkboxes = [params[:event][:sunday], params[:event][:monday], params[:event][:tuesday],
          params[:event][:wednesday], params[:event][:thursday], params[:event][:friday], params[:event][:saturday]]
+      params[:dogs] = parse_dog_params_to_json(params[:dogs])
       if !weekday_checkboxes.include? "1"
         params[:event][:period] = "Does not repeat"
       end
@@ -133,6 +135,22 @@ module FullcalendarEngine
 
     def current_user
       @current_user ||= User.find_by_uid(session[:user_id]) if session[:user_id]
+    end
+
+    def parse_dog_params_to_json(dog_hash)
+      counter = 1
+      all_dogs = []
+      current_dog = 'dog' + counter.to_s
+      while dog_hash.key? current_dog
+        all_dogs.append( {'dog_name' => dog_hash[current_dog]['name'],
+                          'dog_owner' => dog_hash[current_dog]['owner'],
+                          'dog_address' => dog_hash[current_dog]['address'],
+                          'dog_phone_num' => dog_hash[current_dog]['phoneNum'],
+                          'dog_fixed' => dog_hash[current_dog]['fixed'],
+                          'dog_notes' => dog_hash[current_dog]['notes']} )
+        counter += 1
+      return JSON.generate(all_dogs)
+      end
     end
   end
 end
