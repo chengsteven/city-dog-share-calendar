@@ -55,19 +55,68 @@
 
 <p>
 Dogs to walk: <br>
-Dog Name:
-<%= text_field_tag(:q) %> <br>
-Person (Owner):
-<%= text_field_tag(:q) %> <br>
-Address:
-<%= text_field_tag(:q) %> <br>
-Phone #:
-<%= text_field_tag(:q) %> <br>
-Spayed/Neutered:
-<%= check_box_tag(:q) %> <br>
-Notes:
-<%= text_field_tag(:q) %> <br>
+<table id="myTable">
+    <th>Dog Name</th>
+    <th>Dog Owner</th>
+    <th>Address</th>
+    <th>Phone #</th>
+    <th>Spayed/Neutered</th>
+    <th>Notes</th>
+    <tr>
+        <td>
+            <input type="text" name="dogs[dog1][name]" value="" />
+        </td>
+        <td>
+            <input type="text" name="dogs[dog1][owner]" value="" />
+        </td>
+        <td>
+            <input type="text" name="dogs[dog1][address]" value="" />
+        </td>
+        <td>
+            <input type="text" name="dogs[dog1][phoneNum]" value="" />
+        </td>
+        <td>
+            <input type="hidden" name="dogs[dog1][fixed]" value="0" />
+            <input type="checkbox" name="dogs[dog1][fixed]" value="1" />
+        </td>
+        <td>
+            <input type="text" name="dogs[dog1][notes]" value="" />
+        </td>
+        <td>
+          <input type="button" value="Delete" onclick="deleteRow(this)"/>
+        </td>
+    </tr>
+</table>
+<a id="btnAdd">Add a new dog</a>
 </p>
+<script type="text/javascript">
+  function deleteRow(btn) {
+    var row = btn.parentNode.parentNode;
+    row.parentNode.removeChild(row);
+  }
+  var form_row_ctr = 1;
+  $('#btnAdd').on('click', function () {
+      // make sure current row is not empty, at least contains dog name, owner, address, phone #
+      form_row_ctr++;
+      var dogName = "dogs[dog" + form_row_ctr + "][name]";
+      var dogOwner = "dogs[dog" + form_row_ctr + "][owner]";
+      var address = "dogs[dog" + form_row_ctr + "][address]";
+      var phoneNum = "dogs[dog" + form_row_ctr + "][phoneNum]";
+      var fixed = "dogs[dog" + form_row_ctr + "][fixed]";
+      var notes = "dogs[dog" + form_row_ctr + "][notes]";
+      var newTr = '<tr>\
+      <td><input type="text" name=' + dogName + ' value=""/></td>\
+      <td><input type="text" name=' + dogOwner + ' value=""/></td>\
+      <td><input type="text" name=' + address + ' value=""/></td>\
+      <td><input type="text" name=' + phoneNum + ' value=""/></td>\
+      <td><input type="hidden" name=' + fixed + ' value="0" />\
+              <input type="checkbox" name=' + fixed + ' value="1" /></td>\
+              <td><input type="text" name=' + notes + ' value=""/>\
+      <td><input type="button" value="Delete" onclick="deleteRow(this)"/></td>\
+      </tr>';
+      $('#myTable').append(newTr);
+  });
+</script>
 <p>
   <%=f.submit %> <span id = "creating_events" class="spinner" style = "display:none;">Creating, Please wait...</span>
 </p>

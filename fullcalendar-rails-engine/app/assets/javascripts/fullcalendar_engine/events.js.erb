@@ -111,6 +111,17 @@ FullcalendarEngine = {
     showEventDetails: function(event){
       $('#event_desc_dialog').html('')
       $event_description  = $('<div />').html(event.description).attr("id", "edit_event_description")
+      $event_rate  = $('<div />').html('Rate: $' + event.rate).attr("id", "edit_event_rate")
+      $event_holiday_surcharge = $('<div />').html('Holiday Surcharge: ' + event.holiday_surcharge == "1").attr("id", "edit_event_holiday_surcharge")
+      $event_allow_discount  = $('<div />').html('Allow Discount: ' + event.allow_discount == "1").attr("id", "edit_event_allow_discount")
+      $event_taxable = $('<div />').html('Taxable: ' + event.taxable == "1").attr("id", "edit_event_taxable")
+      var dog_list = JSON.parse(event.dogs)
+      var dog_list_string = ''
+      for(var i = 0; i < dog_list.length; i++) {
+        var current_dog = dog_list[i]
+        dog_list_string += current_dog['dog_name'] + ': ' + current_dog['dog_notes'] + '<br>'
+      }
+      $event_dogs  = $('<div />').html(dog_list_string).attr("id", "edit_event_dogs")
       $event_actions      = $('<div />').attr("id", "event_actions")
       $edit_event         = $('<span />').attr("id", "edit_event").html("<a href = 'javascript:void(0);' onclick ='FullcalendarEngine.Events.edit(" + event.id + ")'>Edit</a>");
       $delete_event       = $('<span />').attr("id", "delete_event")
@@ -125,7 +136,7 @@ FullcalendarEngine = {
         $delete_event.html("<a href = 'javascript:void(0);' onclick ='FullcalendarEngine.Events.delete(" + event.id + ", " + false + ")'>Delete</a>");
       }
       $event_actions.append($edit_event).append(" | ").append($delete_event)
-      $('#event_desc_dialog').append($event_description).append($event_actions)
+      $('#event_desc_dialog').append($event_description).append($event_rate).append($event_dogs).append($event_holiday_surcharge).append($event_allow_discount).append($event_taxable).append($event_actions)
       $('#event_desc_dialog').dialog({
         title: title,
         modal: true,

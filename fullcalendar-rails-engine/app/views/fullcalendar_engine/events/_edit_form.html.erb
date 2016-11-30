@@ -20,23 +20,6 @@
   <%=f.datetime_select :endtime %>
 </p>
 <p>
-  Repeats on: <br>
-  <%=f.check_box :sunday %>
-  Sun
-  <%=f.check_box :monday %>
-  Mon
-  <%=f.check_box :tuesday %>
-  Tue
-  <%=f.check_box :wednesday %>
-  Wed
-  <%=f.check_box :thursday %>
-  Thu
-  <%=f.check_box :friday %>
-  Fri
-  <%=f.check_box :saturday %>
-  Sat
-</p>
-<p>
  <%=f.label :rate, 'Rate ($)' %>
  <%=f.text_field :rate %>
 </p>
@@ -55,19 +38,88 @@
 
 <p>
 Dogs to walk: <br>
-Dog Name:
-<%= text_field_tag(:q) %> <br>
-Person (Owner):
-<%= text_field_tag(:q) %> <br>
-Address:
-<%= text_field_tag(:q) %> <br>
-Phone #:
-<%= text_field_tag(:q) %> <br>
-Spayed/Neutered:
-<%= check_box_tag(:q) %> <br>
-Notes:
-<%= text_field_tag(:q) %> <br>
+<%= content_tag :div, class: "temp_information", data: {temp: @event} do %>
+<% end %>
+<table id="myTable">
+    <th>Dog Name</th>
+    <th>Dog Owner</th>
+    <th>Address</th>
+    <th>Phone #</th>
+    <th>Spayed/Neutered</th>
+    <th>Notes</th>
+</table>
+<a id="btnAdd">Add a new dog</a>
 </p>
+<script type="text/javascript">
+
+  $('#edit_event_rate').hide()
+  $('#edit_event_dogs').hide()
+  var dogs_list = $('.temp_information').data('temp')['dogs']
+  dogs_list = JSON.parse(dogs_list)
+  console.log(dogs_list)
+  for(var i = 0; i < dogs_list.length; i++) {
+    var current_dog = dogs_list[i]
+    addDogRow(current_dog)
+  }
+  // fill up the table
+
+  var form_row_ctr = 1;
+  function deleteRow(btn) {
+    var row = btn.parentNode.parentNode;
+    row.parentNode.removeChild(row);
+  }
+
+  function addDogRow(dog) {
+    console.log(dog)
+    form_row_ctr++;
+    var dogName = "dogs[dog" + form_row_ctr + "][name]";
+    var dogOwner = "dogs[dog" + form_row_ctr + "][owner]";
+    var address = "dogs[dog" + form_row_ctr + "][address]";
+    var phoneNum = "dogs[dog" + form_row_ctr + "][phoneNum]";
+    var fixed = "dogs[dog" + form_row_ctr + "][fixed]";
+    var notes = "dogs[dog" + form_row_ctr + "][notes]";
+    var dogNameVal = dog['dog_name'];
+    var dogOwnerVal = dog['dog_owner'];
+    var addressVal = dog['dog_address'];
+    var phoneNumVal = dog['dog_phone_num'];
+    var fixedVal = dog['dog_fixed'];
+    var notesVal = dog['dog_notes'];
+    var checked = ""
+    if (fixedVal == "1") {
+      checked = "checked"
+    }
+    var newTr = '<tr>\
+    <td><input type="text" name=' + dogName + ' value="' + dogNameVal + '"/></td>\
+    <td><input type="text" name=' + dogOwner + ' value="' + dogOwnerVal + '"/></td>\
+    <td><input type="text" name=' + address + ' value="' + addressVal + '"/></td>\
+    <td><input type="text" name=' + phoneNum + ' value="' + phoneNumVal + '"/></td>\
+    <td><input type="checkbox" name=' + fixed + ' value="' + fixedVal + '" ' + checked + '/></td>\
+    <td><input type="text" name=' + notes + ' value="' + notesVal + '"/>\
+    <td><input type="button" value="Delete" onclick="deleteRow(this)"/></td></tr>';
+    $('#myTable').append(newTr);
+  }
+
+  $('#btnAdd').on('click', function () {
+      // make sure current row is not empty, at least contains dog name, owner, address, phone #
+      form_row_ctr++;
+      var dogName = "dogs[dog" + form_row_ctr + "][name]";
+      var dogOwner = "dogs[dog" + form_row_ctr + "][owner]";
+      var address = "dogs[dog" + form_row_ctr + "][address]";
+      var phoneNum = "dogs[dog" + form_row_ctr + "][phoneNum]";
+      var fixed = "dogs[dog" + form_row_ctr + "][fixed]";
+      var notes = "dogs[dog" + form_row_ctr + "][notes]";
+      var newTr = '<tr>\
+        <td><input type="text" name=' + dogName + ' value = ""/></td>\
+        <td><input type="text" name=' + dogOwner + ' value = ""/></td>\
+        <td><input type="text" name=' + address + ' value = ""/></td>\
+        <td><input type="text" name=' + phoneNum + ' value = ""/></td>\
+        <td><input type="hidden" name=' + fixed + ' value="0" />\
+            <input type="checkbox" name=' + fixed + ' value="1" /></td>\
+        <td><input type="text" name=' + notes + ' value = ""/><td>\
+        <td><input type="button" value="Delete" onclick="deleteRow(this)"/></td></tr>';
+      $('#myTable').append(newTr);
+  });
+</script>
 
 
 

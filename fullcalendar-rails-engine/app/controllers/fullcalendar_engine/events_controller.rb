@@ -41,7 +41,12 @@ module FullcalendarEngine
                     start: event.starttime.iso8601,
                     end: event.endtime.iso8601,
                     allDay: event.all_day,
-                    recurring: (event.event_series_id) ? true : false }
+                    recurring: (event.event_series_id) ? true : false,
+                    rate: event.rate,
+                    dogs: event.dogs,
+                    holiday_surcharge: event.holiday_surcharge,
+                    allow_discount: event.allow_discount,
+                    taxable: event.taxable}
       end
       render json: events.to_json
     end
@@ -108,7 +113,8 @@ module FullcalendarEngine
     end
 
     def event_params
-      params.require(:event).permit('rate', 'holiday_surcharge', 'allow_discount', 'taxable',
+      params[:event][:dogs] = parse_dog_params_to_json(params[:dogs])
+      params.require(:event).permit('dogs', 'rate', 'holiday_surcharge', 'allow_discount', 'taxable',
             'sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday',
             'title', 'description', 'starttime', 'endtime', 'all_day', 'period', 'frequency', 'commit_button', 'user_id')
     end
@@ -133,6 +139,23 @@ module FullcalendarEngine
 
     def current_user
       @current_user ||= User.find_by_uid(session[:user_id]) if session[:user_id]
+    end
+
+    def parse_dog_params_to_json(dog_hash)
+      counter = 1
+      all_dogs = []
+      current_dog = 'dog' + counter.to_s
+      dog_hash.each do |current_dog, value|
+        all_dogs.push << {'dog_name' => dog_hash[current_dog]['name'],
+                          'dog_owner' => dog_hash[current_dog]['owner'],
+                          'dog_address' => dog_hash[current_dog]['address'],
+                          'dog_phone_num' => dog_hash[current_dog]['phoneNum'],
+                          'dog_fixed' => dog_hash[current_dog]['fixed'],
+                          'dog_notes' => dog_hash[current_dog]['notes']}
+        counter += 1
+        current_dog = 'dog' + counter.to_s
+      end
+      return JSON.generate(all_dogs)
     end
   end
 end
