@@ -1,7 +1,7 @@
 module FullcalendarEngine
   class EventSeries < ActiveRecord::Base
 
-    attr_accessor :title, :description, :commit_button, :user_id
+    attr_accessor :title, :description, :commit_button, :user_id, :dogs, :rate
 
     validates :frequency, :period, :starttime, :endtime, :title, :description, :rate, :presence => true
 
@@ -34,7 +34,9 @@ module FullcalendarEngine
                               :starttime => new_start_time,
                               :endtime => new_end_time,
                               :rate => rate,
-                              :user_id => user_id
+                              :user_id => user_id,
+                              :dogs => dogs,
+                              :rate => rate
                             )
           new_start_time = old_start_time = frequency.send(frequency_period).from_now(old_start_time)
           new_end_time   = old_end_time   = frequency.send(frequency_period).from_now(old_end_time)

@@ -41,7 +41,9 @@ module FullcalendarEngine
                     start: event.starttime.iso8601,
                     end: event.endtime.iso8601,
                     allDay: event.all_day,
-                    recurring: (event.event_series_id) ? true : false }
+                    recurring: (event.event_series_id) ? true : false,
+                    rate: event.rate,
+                    dogs: event.dogs}
       end
       render json: events.to_json
     end
@@ -108,16 +110,15 @@ module FullcalendarEngine
     end
 
     def event_params
-      params.require(:event).permit('rate', 'holiday_surcharge', 'allow_discount', 'taxable',
+      params.require(:event).permit('dogs', 'rate', 'holiday_surcharge', 'allow_discount', 'taxable',
             'sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday',
-            'title', 'description', 'starttime', 'endtime', 'all_day', 'period', 'frequency', 'commit_button', 'user_id',
-            'dogs')
+            'title', 'description', 'starttime', 'endtime', 'all_day', 'period', 'frequency', 'commit_button', 'user_id')
     end
 
     def determine_event_type
       weekday_checkboxes = [params[:event][:sunday], params[:event][:monday], params[:event][:tuesday],
          params[:event][:wednesday], params[:event][:thursday], params[:event][:friday], params[:event][:saturday]]
-      params[:dogs] = parse_dog_params_to_json(params[:dogs])
+      params[:event][:dogs] = parse_dog_params_to_json(params[:dogs])
       if !weekday_checkboxes.include? "1"
         params[:event][:period] = "Does not repeat"
       end

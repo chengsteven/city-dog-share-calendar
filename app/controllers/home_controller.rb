@@ -1,7 +1,9 @@
 class HomeController < ApplicationController
   def index
-    @user = User.find_by_uid(session[:user_id])
-    if @user != nil
+    if session.key? :user_id
+        @user = User.find_by_uid(session[:user_id])
+    end
+    if @user == nil
       redirect_to kalendar_path()
     end
   end
