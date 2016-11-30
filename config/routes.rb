@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'summary/view'
+
   mount FullcalendarEngine::Engine => "/fullcalendar/demo"
   # get "/fullcalendar/demo" =>
   # root :to => redirect('/fullcalendar/demo')
@@ -21,6 +23,8 @@ Rails.application.routes.draw do
   root  "home#index"
   # resource 'home'
   get '/kalendar' => 'kalendar#index', as: :kalendar
+  
+  get '/summary' => 'summary#view'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
