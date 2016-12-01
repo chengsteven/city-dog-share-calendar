@@ -17,6 +17,8 @@ module NavigationHelpers
       '/'
     when /^the login page$/
       '/auth/facebook/?type=login'
+    when /^the calendar page$/
+      '/'
       
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:
