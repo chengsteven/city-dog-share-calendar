@@ -54,6 +54,11 @@ Dogs to walk: <br>
 
   $('#edit_event_rate').hide()
   $('#edit_event_dogs').hide()
+  $('#edit_event_holiday_surcharge').hide()
+  $('#edit_event_taxable').hide()
+  $('#edit_event_allow_discount').hide()
+  $('#edit_event_actions').hide()
+
   var dogs_list = $('.temp_information').data('temp')['dogs']
   dogs_list = JSON.parse(dogs_list)
   console.log(dogs_list)
@@ -61,9 +66,8 @@ Dogs to walk: <br>
     var current_dog = dogs_list[i]
     addDogRow(current_dog)
   }
-  // fill up the table
 
-  var form_row_ctr = 1;
+  var form_row_ctr = Math.random()
   function deleteRow(btn) {
     var row = btn.parentNode.parentNode;
     row.parentNode.removeChild(row);
@@ -71,7 +75,6 @@ Dogs to walk: <br>
 
   function addDogRow(dog) {
     console.log(dog)
-    form_row_ctr++;
     var dogName = "dogs[dog" + form_row_ctr + "][name]";
     var dogOwner = "dogs[dog" + form_row_ctr + "][owner]";
     var address = "dogs[dog" + form_row_ctr + "][address]";
@@ -97,6 +100,9 @@ Dogs to walk: <br>
     <td><input type="text" name=' + notes + ' value="' + notesVal + '"/>\
     <td><input type="button" value="Delete" onclick="deleteRow(this)"/></td></tr>';
     $('#myTable').append(newTr);
+    console.log($('#myTable'))
+    console.log('new tr has been appended')
+    form_row_ctr = Math.random()
   }
 
   $('#btnAdd').on('click', function () {
