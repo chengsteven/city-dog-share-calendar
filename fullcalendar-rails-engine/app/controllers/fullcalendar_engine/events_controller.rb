@@ -77,10 +77,10 @@ module FullcalendarEngine
 
     def update
       case params[:event][:commit_button]
-      when 'Update All Occurrence'
+      when 'Update All Occurrences'
         @events = @event.event_series.events
         @event.update_events(@events, event_params)
-      when 'Update All Following Occurrence'
+      when 'Update All Following Occurrences'
         @events = @event.event_series.events.where('starttime > :start_time',
                                                    start_time: @event.starttime.to_formatted_s(:db)).to_a
         @event.update_events(@events, event_params)
