@@ -122,7 +122,7 @@ FullcalendarEngine = {
         var current_dog = dog_list[i]
         var neutuered = current_dog['fixed'] == "1" ? "" : " not "
         dog_list_string += current_dog['dog_name'] + " is " + neutuered + "neutuered and "+ 'lives at ' + current_dog['dog_address'] +
-        '. Contact his owner ' + current_dog['dog_owner'] + ' at ' + current_dog['dog_phone_num'] + '. Notes: '
+        '. Contact his parent ' + current_dog['dog_owner'] + ' at ' + current_dog['dog_phone_num'] + '. Notes: '
          + current_dog['dog_notes'] + '<br>'
       }
       $event_dogs  = $('<div />').html(dog_list_string).attr("id", "edit_event_dogs")
