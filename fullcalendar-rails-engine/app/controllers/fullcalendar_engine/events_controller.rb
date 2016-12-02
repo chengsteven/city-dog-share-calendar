@@ -11,7 +11,9 @@ module FullcalendarEngine
 
     def create
       if @event.save
-        render nothing: true
+        respond_to do |format|
+          format.js {render inline: "location.reload();" }
+        end
       else
         render text: @event.errors.full_messages.to_sentence, status: 422
       end
