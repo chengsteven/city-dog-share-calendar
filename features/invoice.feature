@@ -23,10 +23,3 @@ Scenario: Seeing monthly report
   Then I should see "Fluffy"
   Then I should see "Dot"
   Then I should see "Total: $55"
-
-Scenario: No report if no appointments in past month
-  Given skip
-  When I click on "Monthly Summary"
-  And I fill in "11/16"
-  And I click "Generate report"
-  Then I should see "No services rendered during this month"
