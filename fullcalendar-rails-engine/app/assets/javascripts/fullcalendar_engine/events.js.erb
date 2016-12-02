@@ -106,7 +106,7 @@ FullcalendarEngine = {
     },
     refetch_events_and_close_dialog: function() {
       $('.calendar').fullCalendar('refetchEvents');
-      $('.dialog:visible').dialog('destroy');
+      $('.dialog:visible').dialog().dialog('destroy');
     },
     showEventDetails: function(event){
       $('#event_desc_dialog').html('')
